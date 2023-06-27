@@ -1,4 +1,7 @@
-# Logs
+Display                                                                                                                                                                      
+FileType                                                                                                                                                                     
+Initial                                                                                                                                                                      
+Others
 logs
 *.log
 npm-debug.log*
