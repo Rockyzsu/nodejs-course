@@ -17,6 +17,12 @@ var fn = v=>console.log(v)
 fn('aa');
 
 
+
+
+$name="dog"
+console.log($name);
+
+var new_var;
+console.log(new_var);
+
 console.log('end of js');
-
-
