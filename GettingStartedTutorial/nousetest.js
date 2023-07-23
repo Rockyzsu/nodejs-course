@@ -1,0 +1,1 @@
+console.log('see will it called?'); // Yes it will when run node nousetest.js
