@@ -16,7 +16,7 @@ BasicServer.prototype.decorated = function(i) {
 
 //BasicServer.prototype.decorators = {}
 
-BasicServer.prototype.decorators.nodeServer = {
+BasicServer.prototype.decorators['nodeServer'] = {
     init: function(i) {
         print('init node Server pid: ' + i);
     }
