@@ -1,0 +1,2 @@
+var simpleFunc = ()=> "simple function"
+
