@@ -39,11 +39,49 @@ const some = (argslist, func) => {
     }
     return result
 }
-//tellFunc(newFunc)
+
+
+const memoried = (fn) => {
+    let result = {}
+    return (arg) => {
+        if (result[arg]) {
+            return result[arg]
+        } else {
+            result[arg] = fn(arg)
+            return result[arg]
+        }
+    }
+}
+
+const map = (arr, fn) => {
+    let result = []
+    for (let item of arr) {
+        console.log(item)
+        result.push(fn(item))
+    }
+    return result
+}
+
+
+
+const filter = (arr, fn) => {
+    let result = []
+    for (let v of arr) {
+
+        const tmp_v = fn(v)
+        if(tmp_v){
+            result.push(v)
+        }
+    }
+  return result
+}
 export {
     forEach,
     tellFunc,
     times,
     every,
-    some
+    some,
+    memoried,
+    map,
+    filter
 }
