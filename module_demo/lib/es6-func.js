@@ -69,12 +69,27 @@ const filter = (arr, fn) => {
     for (let v of arr) {
 
         const tmp_v = fn(v)
-        if(tmp_v){
+        if (tmp_v) {
             result.push(v)
         }
     }
-  return result
+    return result
 }
+
+function Container(value) {
+    this.value = value
+}
+
+Container.of = function(value) {
+    return new Container(value)
+}
+
+Container.prototype.map = function(fn) {
+    return new Container.of(fn(this.value))
+
+}
+
+
 export {
     forEach,
     tellFunc,
@@ -83,5 +98,6 @@ export {
     some,
     memoried,
     map,
-    filter
+    filter,
+    Container
 }
