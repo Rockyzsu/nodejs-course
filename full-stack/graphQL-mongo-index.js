@@ -1,11 +1,18 @@
+// 加入mongodb
+
 const express = require('express')
 const {
     ApolloServer,
     gql
 } = require('apollo-server-express')
-console.log(process.env.PORT)
+
+require('dotenv').config()
+var db = require('./mongodb')
+const models = require('./notes')
 
 const port = process.env.PORT || 7000
+
+MONGODB_URI_AUTH = process.env.MONGODB_URI_AUTH
 
 const typeDefs = gql`
 type Note{
@@ -19,21 +26,30 @@ type Query {
     notes:[Note!]!
     note(id:ID!):Note!
     }
+
+type Mutation{
+newNote(content:String!):Note!
+}
 `
 
 
 
-let notes = [
-    { id: '1', content: 'this is line 1 ', author: 'joe 1' },
-    { id: '2', content: 'this is line 2 ', author: 'joe 2' },
-    { id: '3', content: 'this is line 3 ', author: 'joe 3' },
-]
 const resolvers = {
     Query: {
         hello: () => "Hello World",
-        notes: () => notes,
-        note: (parent, args) => {
-            return notes.find(note => note.id === args.id);
+        notes: async () => {
+            return await models.find()
+        },
+        note: async (parent, args) => {
+            return await models.findById(args.id);
+        }
+    },
+    Mutation:{
+        newNote:async (parent,args)=>{
+            return await models.create({
+                content:args.content,
+                author:"Harden",
+            })
         }
     }
 }
@@ -48,6 +64,7 @@ server.applyMiddleware({
     path: '/api'
 })
 
+db.connect(MONGODB_URI_AUTH)
 
 app.listen({
     port
