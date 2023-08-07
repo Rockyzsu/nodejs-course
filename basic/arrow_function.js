@@ -17,5 +17,3 @@ var fn3 = x => {
 
 console.log(fn3(10))
 
-
-
