@@ -3,8 +3,13 @@ const app = express()
 const port = 7000
 
 app.use(express.json()); // 允许处理json
+
+app.use(express.static('static'))
+
 app.set('views','views')
+
 app.set('view engine','hbs')
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
     })
