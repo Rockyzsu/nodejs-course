@@ -1,0 +1,14 @@
+@url=http://127.0.0.1:3000/api
+@json=Content-Type: application/json 
+
+###
+get {{url}}/
+
+###
+post {{url}}/register
+{{json}}
+
+{
+    "username":"admin",
+    "password":"123456"
+}

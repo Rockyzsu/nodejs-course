@@ -1,0 +1,15 @@
+@url=http://127.0.0.1:2005/api
+@json=Content-Type: application/json 
+
+###
+get {{url}}/package
+###
+get {{url}}/healthCheck
+###
+post {{url}}/register
+{{json}}
+
+{
+    "usrname":"admin",
+    "password":"123456"
+}
