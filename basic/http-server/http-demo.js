@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
   
     // 设置响应内容
-    res.write('Hello, world!');
+    res.write('Hello, world!');// html 样式无效
   
     // 结束响应
     res.end();
