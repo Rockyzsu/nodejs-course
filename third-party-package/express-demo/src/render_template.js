@@ -35,6 +35,16 @@ app.post('/api/register',async (req, res) => {
     res.send('register')
     } )
 
+
+app.get('/broken',(req,res)=>{
+
+throw new Error("Error")
+})
+
+app.get('*',(req,res)=>{
+    res.send('404')
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
     })

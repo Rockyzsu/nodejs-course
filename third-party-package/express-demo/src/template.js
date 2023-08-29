@@ -4,9 +4,7 @@ const port = 7000
 
 app.use(express.json()); // 允许处理json
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-    })
+
 
 app.get('/',(req,res)=>{
     res.send("OK")

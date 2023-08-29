@@ -1,8 +1,7 @@
 {
-  "name": "gettingstartedtutorial",
+  "name": "fetch-promise",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
-    }
+    "node-fetch": "^2.6.1"
+  }
 }
