@@ -4,15 +4,48 @@
     <title>Static web js
     </title>
 
+    <style>
+    button {
+font-size:10px;
+font-color:red;
+    }
+    </style>
+    <script src='http://pic.kaihu51.com/unixpicgo/jquery-2.2.1.min.js'></script>
+    <script>
+  $(function(){
+    $('h2').html('Fuck you damm <a href="https://www.baidu.com">baidu.com</a>');
+
+
+    $('button').click(e=>{
+console.log("I am click");
+      
+      console.log(str(e.target))
+    })
+
+  });
+
+
+
+    </script>
 </head>
 
 <body>
     <h1>Javasript DOME</h1>
-    <p name=p1'>This is P1 page</p>
-    <p name=p2'>This is detail page</p>
+    <p name='p1' value='fuck' >This is P1 page</p>
+    <p name='p1' value='you' >This is detail page</p>
+    <h2></h2>
+    <div class+'btgrp'>
+    <button id='bt1'>BUTTON 1</button>
+    <button id='bt2'>BUTTON 2</button>
+    <button id='bt3'>BUTTON 3</button>
+    <button id='bt4'>BUTTON 4</button>
+    <button id='bt5'>BUTTON 5</button>
+    </div>
     <script>
         var dom = document.getElementsByName('p1');
-        alert(dom.length);
+        console.log(dom.length)
+        var v1 = dom[0].getAttribute('value')
+        console.log(`value is ${v1}`)
     </script>
 
 </body>
