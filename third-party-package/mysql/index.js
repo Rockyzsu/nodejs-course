@@ -25,6 +25,7 @@ const sqlQuery = {
   insert_v2: "insert into user (password,username,email)values(?,?,?)",
 };
 function queryDemo() {
+
   connection.query(sqlQuery.count, function (err, result) {
     if (err) {
       console.error(err);
@@ -33,6 +34,8 @@ function queryDemo() {
     ret = result[0].result;
     console.log(ret);
   });
+
+  console.log('end');
 
   connection.query(sqlQuery.content, function (err, result) {
     if (err) {
@@ -53,32 +56,37 @@ function queryDemo() {
   });
 }
 
+function insertDemo() {
+  data = ["root", "123456", "root@qq.com"];
+  connection.query(sqlQuery.insert_v1, data, (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
-function insertDemo(){
-    data=['root','123456','root@qq.com']
-    connection.query(sqlQuery.insert_v1,data,(err,result)=>{
-        if(err){console.log(err);return}
-
-        console.log('insert passed!')
-    })
+    console.log("insert passed!");
+  });
 }
 
-function insertDemoV2(){
-    data=['root','123456','root@qq.com']
-    connection.query(sqlQuery.insert_v2,data,(err,result)=>{
-        if(err){console.log(err);return}
+function insertDemoV2() {
+  data = ["root", "123456", "root@qq.com"];
+  connection.query(sqlQuery.insert_v2, data, (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
-        console.log('insert passed!')
-    })
+    console.log("insert passed!");
+  });
 }
-// queryDemo()
+queryDemo()
 // insertDemo()
-insertDemoV2()
-
-
+// insertDemoV2();
 
 connection.end((err) => {
   if (err) {
     console.log("close error");
-  }else{console.log('closed successfully')}
+  } else {
+    console.log("closed successfully");
+  }
 });
