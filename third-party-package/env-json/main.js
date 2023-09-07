@@ -7,3 +7,5 @@ BRANCH = env['BRANCH'];
 // console.log(branch, host);
 // console.log(branch);
 console.log(env[`${BRANCH}_HOST`]);
+console.log(typeof env.DEBUG);
+console.log(typeof true);
