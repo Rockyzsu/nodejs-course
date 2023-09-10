@@ -46,8 +46,8 @@ async function createDoc(obj) {
   }
 }
 
-function janDanStop() {
-  mongoose.disconnect();
+async function janDanStop() {
+  await mongoose.disconnect();
 }
 
 module.exports = { janDanModel, createDoc, janDanStop };
