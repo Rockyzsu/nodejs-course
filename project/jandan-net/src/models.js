@@ -24,21 +24,22 @@ const doc = new mongoose.Schema({
 const janDanModel = mongoose.model("jandan_treehole", doc, "jandan_treehole");
 
 async function isExist(comment_id_) {
-  ret = await janDanModel.findOne({ comment_id: comment_id_ });
-  console.log('is exist return ',ret);
+  ret = await janDanModel
+    .findOne({ comment_id: comment_id_ }, "comment_id")
+    .exec();
+  console.log("is exist return ", ret);
   return ret;
 }
 async function createDoc(obj) {
-    // if (isExist(obj.comment_id)) {
+  if (isExist(obj.comment_id)) {
     //   console.log(obj.comment_id);
-    //   console.log("same");
-    //   return;
-    // }
+    console.log("same");
+    return;
+  }
 
   try {
-    console.log("inserted",obj);
+    console.log("inserted", obj);
     await janDanModel.create(obj);
-    console.log("inserted");
   } catch (e) {
     console.log("dup");
     console.log(e);
