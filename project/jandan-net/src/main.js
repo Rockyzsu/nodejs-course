@@ -33,12 +33,12 @@ async function crawler(url) {
 async function dump_mongoDB(obj) {
   console.log(obj);
   await createDoc(obj);
-  await janDanStop();
+//   await janDanStop();
 }
 
 async function main() {
   await crawler(base_url);
-//   janDanStop();
+  await janDanStop();
 }
 
 main();
