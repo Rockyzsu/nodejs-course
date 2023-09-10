@@ -31,7 +31,7 @@ async function isExist(comment_id_) {
   return ret;
 }
 async function createDoc(obj) {
-  if (isExist(obj.comment_id)) {
+  if (await isExist(obj.comment_id)) {
     //   console.log(obj.comment_id);
     console.log("same");
     return;

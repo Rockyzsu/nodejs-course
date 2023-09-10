@@ -38,7 +38,7 @@ async function dump_mongoDB(obj) {
 
 async function main() {
   await crawler(base_url);
-  janDanStop();
+  setTimeout(janDanStop, 30000);
 }
 
 main();
