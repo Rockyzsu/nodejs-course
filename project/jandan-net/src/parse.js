@@ -21,7 +21,7 @@ function parse(content) {
       content: content,
       vote: Number(vote),
       part: "treehole",
-      updated: current.toDateString(),
+      updated: current.toISOString(),
     });
   });
   return result;
