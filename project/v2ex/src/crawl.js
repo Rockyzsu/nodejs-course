@@ -19,21 +19,15 @@ const instance = axios.create({
 });
 
 require("dotenv").config();
-const token = process.env.toekn;
+const token = process.env.token;
+console.log(token);
 instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 const member = "api/v2/member";
 
 async function getProfile() {
-  instance
-    .get(`${host}/${member}`)
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  //   console.log(ret.data);
+  let resp = await instance.get(`${host}/${member}`);
+  console.log(resp.data);
 }
 
 getProfile();
