@@ -18,8 +18,8 @@ function callback_method(){
 }
 
 async function async_method(){
-    const host = 'https://guiyan-deliveryapi.demo4mlm.com'
-    const fee_url =  `${host}/api/deliveryItemPrice/getItemPrice?companyID=10003&country_id=1&state_id=2&total_weight=3.1`
+    const host = ''
+    const fee_url =  `${host}/api/deliveryItemPrice/getItemPrice?companyID=10003&country=malaysia&state=kuala lumpur&total_weight=3.1`
     console.log(fee_url);
     try {
         const response = await axios.get(fee_url);
