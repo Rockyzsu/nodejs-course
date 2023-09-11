@@ -22,7 +22,7 @@ require("dotenv").config();
 const token = process.env.toekn;
 instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-const member = "/api/v2/member";
+const member = "api/v2/member";
 
 async function getProfile() {
   instance
