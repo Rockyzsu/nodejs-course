@@ -19,6 +19,12 @@ const doc = new mongoose.Schema({
   vote: {
     type: Number,
   },
+  part: {
+    type: String,
+  },
+  updated: {
+    type: String,
+  },
 });
 
 const janDanModel = mongoose.model("jandan_treehole", doc, "jandan_treehole");
@@ -42,12 +48,12 @@ async function createDoc(obj) {
     await janDanModel.create(obj);
   } catch (e) {
     console.log("dup");
-    console.log(e);
+    // console.log(e);
   }
 }
 
 async function janDanStop() {
-//   await mongoose.disconnect();
+  //   await mongoose.disconnect();
   await mongoose.connection.close();
 }
 
