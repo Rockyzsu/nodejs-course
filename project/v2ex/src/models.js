@@ -28,12 +28,15 @@ const doc = new mongoose.Schema({
   last_modified: {
     type: String,
   },
+  topic: {
+    type: String,
+  },
   crawled: {
     type: String,
   },
 });
 
-const v2Model = mongoose.model("v2ex_remote_job", doc, "v2ex_remote_job");
+const v2Model = mongoose.model("v2ex_content", doc, "v2ex_content");
 
 async function isExist(id) {
   ret = await v2Model.findOne({ id: id }, "id").exec();

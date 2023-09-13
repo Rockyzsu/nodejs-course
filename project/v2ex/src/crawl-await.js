@@ -1,5 +1,6 @@
 require("dotenv").config();
 const token = process.env.token;
+const topic = process.env.topic;
 const host = "https://www.v2ex.com";
 const axios = require("axios");
 const parse = require("./parse");
@@ -24,19 +25,20 @@ async function JsonContent(end_point, page) {
 }
 
 // JsonContent("remote", "1");
-async function getContent(topics) {
-  for (let i = 1; i < 5; i++) {
-    const content = await JsonContent(topics, i);
+async function getContent(topic) {
+  for (let i = 1; i < 50; i++) {
+    const content = await JsonContent(topic, i);
     const js_list = parse(content);
     // console.log(content);
     js_list.forEach((item) => {
       // console.log(item);
+      item["topic"] = topic;
       createDoc(item);
     });
   }
   v2Stop();
 }
 
-const topics = "remote";
-getContent(topics);
+// const topics = "remote";
+getContent(topic);
 console.log("end");
