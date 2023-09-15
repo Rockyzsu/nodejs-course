@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>前端应用</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>用户列表</h1>
+    <ul id="user-list"></ul>
+
+    <script>
+      // 发送请求到后端API
+      axios
+        .get("/api/users")
+        .then(function (response) {
+          // 处理来自后端的响应
+          const users = response.data;
+          const item = document.getElementById("user-list");
+          item.innerHTML = users.name;
+          console.log(users);
+        })
+        .catch(function (error) {
+          console.error("请求出错", error);
+        });
+    </script>
+  </body>
+</html>
