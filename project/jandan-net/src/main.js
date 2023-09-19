@@ -33,13 +33,13 @@ async function crawler(url, count) {
 }
 
 async function dump_mongoDB(obj) {
-  console.log(obj);
+  // console.log(obj);
   await createDoc(obj);
   //   await janDanStop();
 }
 
 async function main() {
-  const count = 6;
+  const count = 30;
   await crawler(base_url, count);
   setTimeout(janDanStop, 30000);
 }

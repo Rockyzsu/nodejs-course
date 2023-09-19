@@ -33,21 +33,22 @@ async function isExist(comment_id_) {
   ret = await janDanModel
     .findOne({ comment_id: comment_id_ }, "comment_id")
     .exec();
-  console.log("is exist return ", ret);
+  // console.log("is exist return ", ret);
   return ret;
 }
 async function createDoc(obj) {
   if (await isExist(obj.comment_id)) {
-    //   console.log(obj.comment_id);
-    console.log("same");
+    console.log('update:'+obj.comment_id);
+    console.log(obj.updated);
+    let ret_obj = await janDanModel.findOneAndUpdate({'comment_id': obj.comment_id}, {'vote': obj.vote,'updated': obj.updated},{returnOriginal: false});
     return;
   }
 
   try {
-    console.log("inserted", obj);
+    // console.log("inserted ", obj);
     await janDanModel.create(obj);
   } catch (e) {
-    console.log("dup");
+    // console.log("dup");
     // console.log(e);
   }
 }
