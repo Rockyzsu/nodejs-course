@@ -34,6 +34,7 @@ async function isExist(comment_id_) {
     .findOne({ comment_id: comment_id_ }, "comment_id")
     .exec();
   // console.log("is exist return ", ret);
+  // console.log("is exist return ", ret);
   return ret;
 }
 async function createDoc(obj) {
@@ -41,10 +42,14 @@ async function createDoc(obj) {
     console.log('update:'+obj.comment_id);
     console.log(obj.updated);
     let ret_obj = await janDanModel.findOneAndUpdate({'comment_id': obj.comment_id}, {'vote': obj.vote,'updated': obj.updated},{returnOriginal: false});
+    console.log('update:'+obj.comment_id);
+    console.log(obj.updated);
+    let ret_obj = await janDanModel.findOneAndUpdate({'comment_id': obj.comment_id}, {'vote': obj.vote,'updated': obj.updated},{returnOriginal: false});
     return;
   }
 
   try {
+    // console.log("inserted ", obj);
     // console.log("inserted ", obj);
     await janDanModel.create(obj);
   } catch (e) {
