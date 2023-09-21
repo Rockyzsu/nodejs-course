@@ -1,7 +1,6 @@
 const statues = true;
 
 function main() {
-    
   if (statues) {
     var obj = {
       name: "rokcy",
