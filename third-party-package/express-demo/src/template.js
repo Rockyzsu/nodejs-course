@@ -18,6 +18,15 @@ app.post('/api/register',async (req, res) => {
     res.send('register')
     } )
 
+//500 程序错误的处理
+app.use(function(err,req,res,next){
+    console.log(err.stack);
+    res.status(500).send("500 error");
+})
+//404 处理
+app.use(function(req,res){
+    res.status(404).send('404 page not found')
+})
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
     })

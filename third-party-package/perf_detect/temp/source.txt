@@ -1,0 +1,56 @@
+# 如何使用NVM更新npm的版本,让其支持某个版本下的node.js ? 
+
+**使用命令 `nvm install-latest-npm` 可以更新当前版本的node.js 的npm到最新的版本. **
+
+
+shell
+
+```bash
+nvm install-latest-npm
+
+```
+
+![change version of npm with nvm](https://pic.kaihu51.com/typorawindows/change-version-of-npm-with-nvm.webp)
+
+
+可以使用 `npm -v` 命令来查看你的当前npm使用的版本
+
+shell
+
+```bash
+# 👇️ 查看当前的npm版本
+npm -v
+
+```
+
+![check npm and node versions](https://pic.kaihu51.com/typorawindows/check-npm-and-node-versions.webp)
+
+## 当然也可以安装指定的的npm版本
+
+
+```bash
+npm install -g npm@7.7.2
+
+npm install -g npm@8.11.0
+```
+
+也可以使用命令:  `npm view npm versions` 查看所有的 `npm` 版本.
+
+
+```bash
+npm view npm versions
+```
+
+
+查看线上的当前的npm最新的版本, 把versions改成version就可以了.
+```bash
+npm view npm version
+```
+
+使用npm升级到最新版本
+
+```bash
+npm install -g npm@latest
+```
+
+![update npm to latest version](https://pic.kaihu51.com/typorawindows/update-npm-to-latest-version.webp)
