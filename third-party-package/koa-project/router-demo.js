@@ -1,7 +1,7 @@
 const koa = require('koa');
 const app = new koa();
 const Router = require('koa-router');
-const bodyParse = require('koa-bodyparse')
+const bodyParse = require('koa-bodyparser')
 const router = new Router();
 
 app.use(bodyParse());
@@ -19,8 +19,11 @@ const {code} = ctx.request.query
   ctx.body=`Query code is ${code}`
 });
 
-router.post('/login',async (cxt)=>{
+router.post('/login',async (ctx)=>{
+const {username}=ctx.request.body
+  console.log('call')
 
+  ctx.body=`BODY IS ${username}`
 });
 
 app.use(router.routes());
