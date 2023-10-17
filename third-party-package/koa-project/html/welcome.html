@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Welcome</title>
+        <script>
+            function welcome() {
+                console.log("welcome");
+                const token = localStorage.getItem("token");
+                console.log(token);
+                fetch("/welcome", {
+                    method: "GET",
+                    headers: {
+                        "authorization": "Bearer " + token,
+                        "Content-type": "application/json",
+                    },
+                })
+                    .then((resp) => {
+                        if (resp.status == 401) {
+                            alert("No authorization");
+                            throw Error("no authorization");
+                        } else {
+                            return resp.json();
+                        }
+                    })
+                    .then((js) => {
+                        document.querySelector("p").innerHTML =
+                            JSON.stringify(js);
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        console.log("error");
+                    });
+            }
+
+            function login() {
+                console.log("login");
+                fetch("/login", {
+                    method: "POST",
+                    body: JSON.stringify({ username: "Trible H" }),
+                    headers: { "Content-type": "application/json" },
+                })
+                    .then((resp) => {
+                        return resp.json();
+                    })
+                    .then((js) => {
+                        if (js.token) {
+                            localStorage.setItem("token", js.token);
+                            console.log(js.token);
+                            alert("Login passed");
+                        }
+                    });
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Koa world</h1>
+        <button onclick="welcome()">进入欢迎页面</button>
+        <button onclick="login()">登录</button>
+        <h2>
+            this is p tag.
+            <p></p>
+        </h2>
+    </body>
+</html>

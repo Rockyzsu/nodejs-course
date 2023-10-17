@@ -1,0 +1,6 @@
+# koa
+## jwt
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRyaWJsZSBIIiwiaWF0IjoxNjk3NTA5NjAyLCJleHAiOjE2OTc1MDk2NjJ9.xcITUx85ygSEyVDHrtb8Zh7az8zjhEAjQPRpED1ASgM
+```
+点号分割    
