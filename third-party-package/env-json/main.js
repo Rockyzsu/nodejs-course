@@ -1,7 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 
 env = process.env;
-BRANCH = env['BRANCH'];
+BRANCH = env["BRANCH"];
 // console.log(env);
 // const host = process.env.HOST;
 // console.log(branch, host);
