@@ -9,17 +9,17 @@ const port = 80;
 app.use(express.json()); // 允许处理json
 
 app.get("/user", (req, res) => {
-  res.json({ status: 200, value: "joe" });
+    res.json({ status: 200, value: "joe" });
 });
 
 app.get("/score", (req, res) => {
-  res.json({ status: 200, value: "100" });
+    res.json({ status: 200, value: "100" });
 });
 
 app.get("/age", (req, res) => {
-  res.json({ status: 200, value: "10" });
+    res.json({ status: 200, value: "10" });
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on port ${port}`);
 });
