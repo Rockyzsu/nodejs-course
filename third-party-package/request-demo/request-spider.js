@@ -11,15 +11,16 @@ const options = {
     headers: {
         "User-Agent": "My-App",
         // Authorization: "Bearer my-token",
-        encoding: 'utf8',
+        encoding: 'utf-8',
     },
 };
 
 request(options, function (err, res, body) {
     let source = body.toString();
+
     let data = iconv.decode(body, "utf-8").toString(); // 有点多余
-    
-    
+    console.log(data);
+
     let $ = cheerio.load(body.toString());
     const title = $("title").text();
     console.log(title);
