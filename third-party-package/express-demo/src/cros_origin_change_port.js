@@ -2,17 +2,22 @@
 
 const express = require("express");
 const app = express();
-const port = 7001;
-
+const port = 8000;
+const cors = require("cors");
+// app.use(cors({
+//     origin:'http://127.0.0.1:7001'
+// }));
 app.use(express.json()); // 允许处理json
 app.use(express.static("static"));
 
 app.get("/", (req, res) => {
-    res.render('')
+    res.render("Home page");
 });
 
-app.post("/api/register", async (req, res) => {
-    res.send("register");
+app.get("/api/register", async (req, res) => {
+    console.log('call')
+    // res.setHeader("Access-Control-Allow-Origin", "*")
+    res.json({ code: 200 });
 });
 
 //500 程序错误的处理
