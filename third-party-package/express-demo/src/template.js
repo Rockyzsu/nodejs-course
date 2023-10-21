@@ -1,19 +1,22 @@
 const express = require("express");
 const app = express();
+var multipart = require("connect-multiparty");
+
+
 const port = 7000;
 
-app.use(express.json()); // 允许处理json
+// app.use(express.json()); // 允许处理json
 
 app.get("/", (req, res) => {
     res.send("OK");
 });
 
-app.post("/api/register", async (req, res) => {
+app.post("/api/register", multipart(),(req, res) => {
     console.log(req.body);
     const body = req.body;
     console.log(body.username);
     console.log(body.password);
-    res.send("register");
+    res.json({ msg: "register", username:body.username});
 });
 
 //500 程序错误的处理
