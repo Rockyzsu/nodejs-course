@@ -1,26 +1,19 @@
-// 用户登录
+// 用户登录, work! 使用的是 cookie-session
 const express = require("express");
 const app = express();
-// var session = require("express-session");
 const port = 7000;
+var cookieSession = require("cookie-session");
 
 app.use(express.static("static"));
 app.use(express.urlencoded({ extended: false })); // 主要是这个起作用, express.json() 无用
-// app.use(
-//     session({
-//         secret: "1234567890",
-//         cookie: { maxAge: 10 * 60 },
-//         resave: true,
-//         saveUninitialized: true,
-//     })
-// );
+
 function authMiddleware(req, res, next) {
     if (req.session.username) {
         next();
+    } else {
+        res.send("auth failed");
     }
-    res.send("auth failed");
 }
-var cookieSession = require("cookie-session");
 
 app.use(
     cookieSession({
@@ -38,9 +31,10 @@ app.get("/admin", (req, res) => {
         res.redirect("/login.html");
     }
 });
-app.get("/secret", authMiddleware,(req, res) => {
+app.get("/secret", authMiddleware, (req, res, next) => {
     res.send("you can see my secret ! password is 123456");
 });
+
 app.post("/user/login", (req, res) => {
     const _username = req.session.username;
     console.log(_username);
