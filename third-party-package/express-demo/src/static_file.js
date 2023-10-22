@@ -3,8 +3,9 @@ const app = express();
 var multipart = require("connect-multiparty");
 
 const port = 7000;
-
-// app.use(express.json()); // 允许处理json
+app.use("/my", express.static("static"));
+app.use("/you", express.static("public"));
+app.use(express.json()); // 允许处理json
 
 app.get("/", (req, res) => {
     res.send("Home page");
@@ -29,3 +30,5 @@ app.use(function (req, res) {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
+
+// module.exports = app; // 这样可以走 node /bin/www 启动

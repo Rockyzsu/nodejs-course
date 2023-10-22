@@ -6,8 +6,14 @@ const port = 7000;
 
 // app.use(express.json()); // 允许处理json
 
-app.get("/", (req, res) => {
-    res.send("Home page");
+const showHeaders = (req, res, next) => {
+    console.log(req.headers);
+    req.token = req.headers["user-agent"];
+    next();
+};
+
+app.get("/", showHeaders, (req, res) => {
+    res.send(`Home page ${req.token}`);
 });
 
 app.post("/api/register", multipart(), (req, res) => {

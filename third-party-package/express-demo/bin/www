@@ -1,0 +1,5 @@
+// 一样的效果, 只是把app的部分移除出来
+const app = require("../src/static_file");
+app.listen(7000, () => {
+    console.log(`Example app listening on port 7000`);
+});
