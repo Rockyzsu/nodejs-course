@@ -32,6 +32,12 @@ server.get('/getMeta',async()=>{
   const data = await getMetaDataFunc()
   return data
 })
+
+server.get('/health',async()=>{
+  console.log('call me baby worker pid ',process.pid)
+  return "OK"
+})
+
 const host = '0.0.0.0'
 const port = 7000
 server.listen(port,host,()=>{
