@@ -7,21 +7,23 @@ const recipe = grpc.loadPackageDefinition(pkg_def).recipe
 
 const host = '127.0.0.1'
 
-const port = 7000
+const port = 7001
 
 const server = new grpc.Server()
 
 server.addService(recipe.RecipeService.service,{
   getMetaData:(_call,cb)=>{
     console.log('call me')
-cb(null,{
+  cb(null,{
   pid:process.pid
 })
   },
   getRecipe:(call,cb)=>{
 if(call.request.id!=42){return cb(new Error(`unknowd recipe ${call.request.id}`))}
     cb(null,{
-      id:42,name:"Titoka"
+      id:42,
+      name:"Titok",
+      colors:[{color:'red'},{color:'black'},{color:'pink'}]
     })
   }
 });

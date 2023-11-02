@@ -9,8 +9,9 @@ rpc GetMetaData(Empty) returns (Meta){}
 message Recipe {
 
 int32 id =1;
-    string name = 2;
-    }
+string name = 2;
+repeated Color colors=3;
+ }
 
 message RecipeRequest {
 int32 id =1;
@@ -21,6 +22,10 @@ message Meta {
     }
 
 message Empty {}
+
+message Color{
+string color =1;
+    }
 
 
 
