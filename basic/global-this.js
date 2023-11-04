@@ -5,6 +5,10 @@ console.log(this); // {}
 
 // console.log(window); //ReferenceError: window is not defined
 
-
-var a = 'global a'
+var a = "global a";
 console.log(this.a);
+function foobar() {
+  this.name = "foo";
+  yyy = 2000;
+}
+console.log(global);
