@@ -15,16 +15,12 @@ async function operation() {
     .connect();
 
   // await client.connect();
-  await client.set("key", "12345");
+  let value = await client.set("key", "12345");
+  console.log(value); // "OK"
 
-  // // 获取键对应的值
-  // client.get("key", (error, result) => {
-  //   if (error) {
-  //     console.error(error);
-  //   } else {
-  //     console.log(result);
-  //   }
-  // });
+  value = await client.get("key");
+  console.log(value); // "12345"
+
   await client.disconnect();
 }
 
