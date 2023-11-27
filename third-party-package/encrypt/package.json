@@ -1,4 +1,8 @@
 {
+  "name": "md5",
+  "bin":{
+    "md5":"./md5.js"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3"
   }
