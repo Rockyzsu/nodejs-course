@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/static_file.js"
+    "start": "nodemon src/uppercase_middleware.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +18,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "hbs": "^4.2.0",
+    "morgan": "^1.10.0",
     "node-fetch": "^2.6.6",
     "nodemon": "^3.0.1"
   }
