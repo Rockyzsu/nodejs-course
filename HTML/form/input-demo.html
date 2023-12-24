@@ -1,0 +1,73 @@
+<html>
+
+<head>
+  <title>Input Demo</title>
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <script type="text/javascript">
+    function checkHealth() {
+      console.log('check health');
+      const form = document.getElementById('nextform');
+      console.log(form.realname.value);
+    }
+    setInterval(checkHealth, 10000);
+    console.log('start');
+
+    function getTotal() {
+      var e = window.event;
+      e.preventDefault();
+      const form2 = document.getElementById('nextform');
+      const count = form2.count.value;
+      if(!count){
+        alert('请输入数量');
+      } 
+
+      total_price = document.getElementById('totalprice');
+      total_price.innerHTML = count * 100;
+
+    }
+
+  </script>
+</head>
+
+<body>
+  <form action="/" method="post" id="myform">
+    <p>Enter your name: <input type="text" id='name_id' name="name" /></p>
+    <p>Enter your age: <input type="number" name="age" /></p>
+    <p>Enter your option: <input type="checkbox" name="age" /></p>
+    <p>Enter your age: <input type="text" name="age" /></p>
+    <p>Enter your age: <input type="text" name="age" /></p>
+    <p>Enter your age: <input type="text" name="age" /></p>
+
+    <p><input type="submit" /></p>
+  </form>
+
+  <div>
+    <h1>Form Data</h1>
+    <h2>新的测试, 使用bootstrap</h2>
+    <p>总票价： </p>
+    <p id="totalprice"></p>
+    <form id="nextform">
+      <table class="table table-boarded tabale-hover table-sm">
+        <tr>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>儿童</th>
+          <th>数量</th>
+        </tr>
+        <tr>
+          <td><input id='realname' /></td>
+          <td>
+            <select id="'gender">
+              <option value=0>Male</option>
+              <option value=1>Female</option>
+            </select>
+          </td>
+          <td><input type="checkbox" id="'child" /></td>
+          <td><input type="number" id="count"></td>
+        </tr>
+      </table>
+      <button type="submit" value="提交" class="btn btn-primary" onclick="getTotal()">提交</button>
+    </form>
+  </div>
+
+</html>
