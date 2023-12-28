@@ -3,8 +3,11 @@ const LogErrorConsole = (req, msg) => {
   console.log(result);
   console.log(req?.body ?? "");
   console.log(msg);
-  console.log(new Date().toISOString()+ result+' '+msg );
+  console.log(new Date().toISOString() + result + " " + JSON.stringify(msg));
 };
 
-const msg = "hello world";
-LogErrorConsole("", msg);
+LogErrorConsole('', 'hello world');
+LogErrorConsole('',{'name':'job'})
+LogErrorConsole('', [1,23,4]);
+LogErrorConsole('',null);
+LogErrorConsole('',undefined);
