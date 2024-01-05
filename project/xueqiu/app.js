@@ -1,13 +1,22 @@
 require("dotenv").config();
 const fs = require("fs");
 const axios = require("axios");
-const { readCookies, writeReplyID, readReplyID } = require("./utils");
+const {
+  readCookies,
+  writeReplyID,
+  readReplyID,
+  readStock,
+  writeStock,
+} = require("./utils");
 const sendMsgByDingDing = require("./sendDing");
 
-
-const INTERVAL = 1000;
+const INTERVAL = 1000 * 60;
 
 const sent_content_id_list = readReplyID();
+var stock_list = [
+  readStock(process.env.user_id1),
+  readStock(process.env.user_id2),
+];
 
 async function monitorReply(user_id, secret, access_token) {
   const cookies = readCookies();
@@ -61,7 +70,7 @@ async function monitorReply(user_id, secret, access_token) {
   });
 }
 
-async function monitorMultiUser() {
+async function monitorUserMulti() {
   console.log(new Date());
 
   await monitorReply(
@@ -76,4 +85,77 @@ async function monitorMultiUser() {
   );
 }
 
-setInterval(monitorMultiUser, INTERVAL);
+async function monitorStock(user_id, secret, access_token, idx) {
+  const cookies = readCookies();
+  const response = await axios.get(
+    "https://stock.xueqiu.com/v5/stock/portfolio/stock/list.json",
+    {
+      params: {
+        pid: "-1",
+        category: "1",
+        size: "1000",
+        uid: user_id,
+      },
+      headers: {
+        authority: "stock.xueqiu.com",
+        accept: "application/json, text/plain, */*",
+        "accept-language": "zh,en;q=0.9,en-US;q=0.8,zh-CN;q=0.7,zh-TW;q=0.6",
+        "cache-control": "no-cache",
+        cookie: cookies,
+        origin: "https://xueqiu.com",
+        pragma: "no-cache",
+        referer: `https://xueqiu.com/u/${user_id}`,
+        "sec-ch-ua":
+          '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": '"Windows"',
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-site",
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+    }
+  );
+
+  if (response.status !== 200) {
+    console.log("error");
+    return;
+  }
+
+  const resp_data = response.data;
+  const stocks_list = resp_data.data.stocks;
+
+  stocks_list.forEach(async (stockItem) => {
+    if (!stock_list[idx].includes(stockItem.name)) {
+      // description = reply.description.replace(/<[^>]+>/g, "");
+      stock_list[idx].push(stockItem.name);
+      console.log(stockItem.name);
+      writeStock(user_id, stockItem.name + "\n");
+      await sendMsgByDingDing(secret, access_token, stockItem.name);
+    }
+  });
+}
+
+async function monitorStockMulti() {
+  console.log(new Date());
+  await monitorStock(
+    process.env.user_id1,
+    process.env.secret1,
+    process.env.access_token1,
+    0
+  );
+  await monitorStock(
+    process.env.user_id2,
+    process.env.secret2,
+    process.env.access_token2,
+    1
+  );
+}
+
+async function main() {
+  await monitorUserMulti();
+  await monitorStockMulti();
+}
+
+setInterval(main, INTERVAL);

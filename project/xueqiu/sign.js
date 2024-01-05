@@ -1,7 +1,5 @@
 const crypto = require("crypto");
 const querystring = require("querystring");
-;
-
 function getSign(secret) {
   const timestamp = Date.now().toString();
   const stringToSign = `${timestamp}\n${secret}`;
