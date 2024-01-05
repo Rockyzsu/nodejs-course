@@ -21,20 +21,20 @@ async function sendMsgByDingDing(secret,access_token,content) {
   };
 
   // 发起HTTP POST请求
-  // await axios({
-  //   method: "post",
-  //   url: `https://oapi.dingtalk.com/robot/send?access_token=${access_token}&timestamp=${timestamp}&sign=${sign}`,
+  await axios({
+    method: "post",
+    url: `https://oapi.dingtalk.com/robot/send?access_token=${access_token}&timestamp=${timestamp}&sign=${sign}`,
 
-  //   data: postData,
-  //   headers: headers,
-  // })
-  //   .then((response) => {
-  //     console.log(`成功发送消息到钉钉群组！`);
-  //     console.log(response.data);
-  //   })
-  //   .catch((error) => {
-  //     console.error(`发送消息失败：${error}`);
-  //   });
+    data: postData,
+    headers: headers,
+  })
+    .then((response) => {
+      console.log(`成功发送消息到钉钉群组！`);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(`发送消息失败：${error}`);
+    });
 
 }
 

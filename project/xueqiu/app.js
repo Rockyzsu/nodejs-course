@@ -10,9 +10,11 @@ const {
 } = require("./utils");
 const sendMsgByDingDing = require("./sendDing");
 
-const INTERVAL = 1000 * 60;
+const INTERVAL = 3000;
 
 const sent_content_id_list = readReplyID();
+// console.log(sent_content_id_list);
+
 var stock_list = [
   readStock(process.env.user_id1),
   readStock(process.env.user_id2),
@@ -58,14 +60,15 @@ async function monitorReply(user_id, secret, access_token) {
   }
 
   const resp_data = response.data;
-
+  // console.log('我的输出')
+  // console.log(sent_content_id_list);
   resp_data.statuses.forEach(async (reply) => {
-    if (!sent_content_id_list.includes(reply.id)) {
+    if (!sent_content_id_list.includes(reply.id.toString())) {
       description = reply.description.replace(/<[^>]+>/g, "");
       sent_content_id_list.push(reply.id);
       console.log(reply.id, description);
       writeReplyID(reply.id + "\n");
-      await sendMsgByDingDing(secret, access_token, description);
+      await sendMsgByDingDing(secret, access_token, description); 
     }
   });
 }
@@ -125,13 +128,14 @@ async function monitorStock(user_id, secret, access_token, idx) {
 
   const resp_data = response.data;
   const stocks_list = resp_data.data.stocks;
-
+  // console.log('我的输出')
+  // console.log(stock_list);
   stocks_list.forEach(async (stockItem) => {
-    if (!stock_list[idx].includes(stockItem.name)) {
+    if (!(stock_list[idx].includes(stockItem.symbol))) {
       // description = reply.description.replace(/<[^>]+>/g, "");
-      stock_list[idx].push(stockItem.name);
-      console.log(stockItem.name);
-      writeStock(user_id, stockItem.name + "\n");
+      stock_list[idx].push(stockItem.symbol);
+      // console.log(stockItem.name);
+      writeStock(user_id, stockItem.symbol + "\n");
       await sendMsgByDingDing(secret, access_token, stockItem.name);
     }
   });
@@ -159,3 +163,4 @@ async function main() {
 }
 
 setInterval(main, INTERVAL);
+// main()
