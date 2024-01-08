@@ -65,7 +65,7 @@ async function monitorReply(user_id, secret, access_token) {
   resp_data.statuses.forEach(async (reply) => {
     if (!sent_content_id_list.includes(reply.id.toString())) {
       description = reply.description.replace(/<[^>]+>/g, "");
-      sent_content_id_list.push(reply.id);
+      sent_content_id_list.push(reply.id.toString());
       console.log(reply.id, description);
       writeReplyID(reply.id + "\n");
       await sendMsgByDingDing(secret, access_token, description); 
