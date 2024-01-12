@@ -25,16 +25,18 @@ app.get("/", (req, res) => {
         console.log("in connection");
         // res.json({ msg: result });
         connection.query("SELECT * FROM promocode limit 1", function (err, result) {
-            console.log(result);
-            return res.json({ msg: result });
+            console.log("Done");
+            return res.json({ msg: "Done" });
         });
       });
     } catch (err) {
       console.log(err);
     } finally {
-      console.log("out connection");
-    connection.release();
-    }
+    // connection.release()
+    console.log("out connection");
+    
+}
+
   });
 });
 
