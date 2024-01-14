@@ -3,6 +3,7 @@ const sleep = (ms) => {
     setTimeout(resolve, ms);
   });
 };
+
 async function forEachFunc() {
   const arr = [
     () => console.log("start"),
@@ -17,6 +18,7 @@ async function forEachFunc() {
   ];
   arr.forEach(async (fn) => {
     await fn();
+    console.log("next");
   });
 }
 

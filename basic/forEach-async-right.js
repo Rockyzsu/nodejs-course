@@ -13,5 +13,9 @@ const foo = async () => {
     console.log('end1');
 }
 
+
 foo(); // 从1到5，每隔一秒输出一个数字 错的
+const main = async ()=> {
+    await foo();
+}
 console.log('end2')
