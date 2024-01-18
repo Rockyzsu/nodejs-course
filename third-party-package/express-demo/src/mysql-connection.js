@@ -7,7 +7,6 @@ var dbConfig = require("./dbconfig");
 var pool = mysql.createPool(dbConfig.mysql);
 const port = 7000;
 
-// app.use(express.json()); // 允许处理json
 
 morgan.token("timestamp", () => {
   return new Date().toISOString();
@@ -15,28 +14,29 @@ morgan.token("timestamp", () => {
 app.use(morgan(":timestamp :method :url :status :response-time ms"));
 
 app.get("/", (req, res) => {
-  const query = `SELECT * FROM salesorder WHERE set_invalid = 0 limit 5`;
+  const query = `SELECT * FROM sales_salesorder WHERE set_invalid = 0 limit 5`;
   pool.getConnection(function (err, connection) {
     //建立连接，增加一个用户信息
     try {
-      //[rocky] 只是初始化，并没有增加用户
       connection.query(query, function (err, result) {
-        // console.log(result);
         console.log("in connection");
-        // res.json({ msg: result });
-        connection.query("SELECT * FROM promocode limit 1", function (err, result) {
+        connection.query("SELECT * FROM sales_salesorder", function (err, result) {
+          if(err){
+            console.log("err");
+            console.log(err);
+          }
             console.log("Done");
-            return res.json({ msg: "Done" });
+            console.log('result ',result)
+            // connection.release();
+            return res.json({ msg: "Done",data:result });
         });
       });
     } catch (err) {
       console.log(err);
     } finally {
-    // connection.release()
+    connection.release()
     console.log("out connection");
-    
 }
-
   });
 });
 
