@@ -1,0 +1,46 @@
+{
+  "name": "beidou-example-simple",
+  "version": "2.3.0",
+  "description": "beidou example simple",
+  "scripts": {
+    "start": "beidou start",
+    "debug": "beidou debug",
+    "stop": "beidou stop",
+    "dev": "beidou dev",
+    "build": "beidou build",
+    "build:node": "beidou build --target=node",
+    "lint": "eslint --fix --ext .jsx,.js app client config"
+  },
+  "author": "",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^4.11.0",
+    "eslint-config-beidou": "^2.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "beidou": "^2.3.0",
+    "beidou-cli": "^2.3.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.1.2"
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "license": "MIT",
+  "gitHead": "218112eb300d7b82add9bc03b637e0fc5b482c1b",
+  "boilerplate": {
+    "name": "beidou-example-simple",
+    "version": "2.3.0",
+    "description": "beidou example simple"
+  }
+}
