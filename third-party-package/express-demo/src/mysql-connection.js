@@ -4,9 +4,9 @@ var morgan = require("morgan");
 var multipart = require("connect-multiparty");
 var mysql = require("mysql");
 var dbConfig = require("./dbconfig");
-var pool = mysql.createPool(dbConfig.mysql);
+var pool = mysql.createPool(dbConfig.mysql)
 const port = 7000;
-
+const axios = require("axios");
 
 morgan.token("timestamp", () => {
   return new Date().toISOString();
@@ -14,29 +14,45 @@ morgan.token("timestamp", () => {
 app.use(morgan(":timestamp :method :url :status :response-time ms"));
 
 app.get("/", (req, res) => {
-  const query = `SELECT * FROM sales_salesorder WHERE set_invalid = 0 limit 5`;
+  const query = `SELECT * FROM sales_salesorder WHERE set_invalid = 0 limit 1`;
   pool.getConnection(function (err, connection) {
+    if (err) {
+      console.log("err");
+      console.log(err);
+      return res.status(500).json({ msg: "err", data: err });
+    }
+
     //建立连接，增加一个用户信息
     try {
-      connection.query(query, function (err, result) {
+      // connection.release();      
+      connection.query(query, async function (err, result) {
         console.log("in connection");
-        connection.query("SELECT * FROM sales_salesorder", function (err, result) {
-          if(err){
-            console.log("err");
-            console.log(err);
-          }
+        const result2 = await axios.get("https://qq.com/");
+        // console.log(result2.data);
+        // connection.release();
+        console.log(connection.state);
+        // console.log(result);
+        connection.query(
+          "SELECT * FROM sales_salesorder",
+          function (err, result) {
+            if (err) {
+              console.log("err");
+              console.log(err);
+            }
             console.log("Done");
-            console.log('result ',result)
+            //console.log('result ',result)
             // connection.release();
-            return res.json({ msg: "Done",data:result });
-        });
+            return res.status(200).json({ msg: "Done", data: JSON.stringify(result) });
+          }
+        );
       });
     } catch (err) {
       console.log(err);
+      return res.status(400).json({ msg: "Failed", data: err });
     } finally {
-    connection.release()
-    console.log("out connection");
-}
+      connection.release();
+      console.log("out connection");
+    }
   });
 });
 
