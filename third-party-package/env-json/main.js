@@ -9,3 +9,9 @@ BRANCH = env["BRANCH"];
 console.log(env[`${BRANCH}_HOST`]);
 console.log(typeof env.DEBUG);
 console.log(typeof true);
+console.log(process.env.USE_FLAG);
+if (process.env.USE_FLAG) {
+  console.log("Pass");
+}
+
+console.log(typeof process.env.USE_FLAG);
