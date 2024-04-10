@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Set time demo</title>
+</head>
+
+<body>
+
+    <div>
+        <p id="status">Initial</p>
+    </div>
+    <script>
+        // setTimeout(doWork,0);
+        function doWorkInChunk() {
+            let count = 0
+            const startTime = Date.now();
+            const statusElement = document.getElementById('status');
+
+            function doWork() {
+                if (Date.now() - startTime < 10000) {
+                    count = count + 1
+                    statusElement.innerText = `Just generate number ${count}`;
+                    console.log(count);
+                    setTimeout(doWork, 0)
+                } else {
+                    statusElement.innerText = 'Processing completed'
+                }
+            }
+            doWork();
+
+        }
+        doWorkInChunk()
+    </script>
+</body>
+
+</html>

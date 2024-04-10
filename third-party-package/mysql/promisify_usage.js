@@ -2,9 +2,6 @@ require("dotenv").config();
 const config = require("./DBConfig.js");
 const { promisify } = require("util");
 var mysql = require("mysql");
-
-// var dbConfig = require("../db/DBConfig");
-
 var pool = mysql.createPool(config);
 
 async function queryTask() {
@@ -25,13 +22,30 @@ async function queryTask() {
   } catch (error) {
     console.log(error);
   } finally {
+    console.log("finally");
     // Always ensure the connection is returned to the pool
     if (connection) connection.release();
   }
 }
 
+// 写法1 
+function main() {
+  // await queryTask();
+  queryTask().then(() => {
+    console.log("done");
+    pool.end(); // 断开pool
+  });
+}
+
+
+main();
+
+// 写法2 
 async function main() {
   await queryTask();
 }
 
-main();
+main().then(() => {
+  console.log("done");
+  pool.end(); // 断开pool
+});

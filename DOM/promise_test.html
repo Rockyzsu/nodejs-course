@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Set time demo</title>
+</head>
+
+<body>
+
+    <div>
+        <p id="status">Initial</p>
+    </div>
+    <script>
+        async function getIP() {
+            const url = 'https://api.ipify.org/?format=json'
+            const response = await fetch(url)
+            // console.log(response.status);
+            // console.log(response.json())
+            return await response.json()
+        }
+
+        getIP().then((data) => { console.log(data.ip) }).catch((err) => { console.log(err) })
+    </script>
+</body>
+
+</html>
