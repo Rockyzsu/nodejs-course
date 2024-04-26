@@ -27,8 +27,8 @@ async function authDemo() {
   //   const response = await axios.get(authUri);
   //   console.log(response.data);
 
-  let authResponse = await oauthClient.createToken(returnURL);
-  let oauth2_token_json = JSON.stringify(authResponse.json, null, 2);
+  // let authResponse = await oauthClient.createToken(returnURL);
+  // let oauth2_token_json = JSON.stringify(authResponse.json, null, 2);
 
   //   console.log(oauth2_token_json);
 }
