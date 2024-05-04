@@ -128,3 +128,15 @@ console.log(`after trime =====${trim(test_str)}====`)
 
 var test_str2 = 'http://www.baidu.com   \t  \t'
 console.log(`after trime =====${trim(test_str2)}====`)
+
+const str_test = "FF1(10007)";
+
+// 使用正则表达式匹配括号内的数字
+const match = str_test.match(/\((\d+)\)/);
+
+if (match) {
+  const number = match[1]; // 第一个捕获组，即括号内的数字
+  console.log(number); // 输出：10007
+} else {
+  console.log('没有找到括号内的数字');
+}
