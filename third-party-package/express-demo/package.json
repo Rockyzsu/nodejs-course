@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/uppercase_middleware.js"
+    "start": "nodemon src/check_origin.js"
   },
   "keywords": [],
   "author": "",
