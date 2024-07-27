@@ -14,4 +14,4 @@ var simpleFun = () => {
 
 
 simpleFun()
-console.log(a)
+console.log(a) //ReferenceError: a is not defined

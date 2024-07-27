@@ -16,3 +16,9 @@ var fn3 = (x) => {
 console.log(fn3(10));
 
 
+let fn4 = (x) => {return {name:'rocky'}}
+
+let result  = fn4(10);
+
+console.log(result);
+

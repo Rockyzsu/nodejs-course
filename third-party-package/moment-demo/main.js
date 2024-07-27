@@ -58,4 +58,8 @@ const getCurrentQuarterMonth = ()=> {
   return date_range;
 }
 
+
 console.log(getCurrentQuarterMonth())
+
+const formattedTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+console.log(formattedTime);
