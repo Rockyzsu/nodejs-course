@@ -12,3 +12,18 @@ console.log(flattened2);
 const package_product_link = "[[1, 10]]";
 const is_bundled = JSON.parse(package_product_link).flat(2);
 console.log(is_bundled);
+
+
+let array = [[7], [9], [11], [13]];
+let flattenedArray = array.flat();
+console.log("Example 2 ")
+console.log(flattenedArray);
+
+let package_country_product_link = [[1, [2],[3]],[2,[1]]]
+let result = package_country_product_link.map((item1) =>
+                              item1.slice(1) // TODO 如果没有传入country id，这些需要改动
+                            ).flat(2)
+
+console.log("Example 3 ")
+console.log(result);
+
