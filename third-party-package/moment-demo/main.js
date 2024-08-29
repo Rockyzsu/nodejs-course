@@ -63,3 +63,9 @@ console.log(getCurrentQuarterMonth())
 
 const formattedTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 console.log(formattedTime);
+
+// const moment = require('moment');
+
+const threeMonthsAgoFirstDay = moment().subtract(3, 'months').startOf('month');
+const formattedDate1 = threeMonthsAgoFirstDay.format('YYYY-MM-DD HH:mm:ss');
+console.log(formattedDate1);

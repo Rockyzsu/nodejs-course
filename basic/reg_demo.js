@@ -140,3 +140,9 @@ if (match) {
 } else {
   console.log('没有找到括号内的数字');
 }
+
+const str2 = 'Hello World';
+const targetChar = 'World';
+const regex = new RegExp(targetChar);
+const containsChar = regex.test(str2);
+console.log(containsChar);

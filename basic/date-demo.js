@@ -22,3 +22,16 @@ const yearMonth2 = () => {
 };
 
 console.log(yearMonth2());
+
+const currentDate1 = new Date();
+currentDate1.setMonth(currentDate1.getMonth() - 4);
+// const month = currentDate1.toLocaleString('default', { month: 'long' });
+console.log(currentDate1);
+
+const currentDate2 = new Date();
+currentDate2.setMonth(currentDate2.getMonth() - 3);
+currentDate2.setDate(1);
+console.log(currentDate2.toISOString().split('T')[0]);
+console.log(currentDate2);
+
+
