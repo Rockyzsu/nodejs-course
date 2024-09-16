@@ -69,3 +69,4 @@ console.log(formattedTime);
 const threeMonthsAgoFirstDay = moment().subtract(3, 'months').startOf('month');
 const formattedDate1 = threeMonthsAgoFirstDay.format('YYYY-MM-DD HH:mm:ss');
 console.log(formattedDate1);
+
