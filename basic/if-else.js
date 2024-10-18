@@ -10,4 +10,10 @@ if (condition1) {
 } else if (condition3) {
   // 执行条件3为真时的代码块
   console.log('condition3');
-} 
+}
+
+
+const use_ssl = 'true'
+const result = use_ssl == 'true'? true:false
+
+console.log(result)
