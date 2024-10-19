@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+
+    <title></title>
+</head>
+
+<body>
+  <p id='fontsize' style="font-size:10px">Basic Size</p>
+  <div id='div_item'>my style is <span id='content' style="color:red;">red</span></div>
+
+    <button id='update_btn'>update style</button>
+    <button id='large_btn'>large font</button>
+    <script>
+      function updateStyle(){ 
+      var content_node = document.querySelector('#content')
+        if(content_node.style.color == 'green'){
+          content_node.style.color = 'red'
+        }else{
+          content_node.style.color = 'green'
+        }
+        console.log('change color')
+      }
+  
+  const largeFont = function(){
+  var node = document.querySelector("#fontsize")
+    let origin_size = node.style.fontSize
+    console.log(origin_size)
+    new_size = Number(origin_size.split('px')[0]) + 2
+    node.style.fontSize = String(new_size)+'px'
+  }
+
+    
+    </script>
+
+
+    <script>
+    var btn = document.querySelector('#update_btn')
+    btn.onclick = function(){
+    console.log('i am been clicked')
+    updateStyle()
+    }
+
+
+    var large_btn = document.querySelector('#large_btn')
+    large_btn.onclick = function(){
+    console.log('i am been clicked')
+    largeFont()
+    }
+    </script>
+
+  </body>
+
+</html>
+

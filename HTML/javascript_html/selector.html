@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+
+    <title></title>
+</head>
+
+<body>
+    <div id='div1'>id value is div1 </div>
+    <div id='div2'>id value is div2 </div>
+    <span id='span'></span>
+
+    <button id='btn'>Click me</button>
+    <button id='update_btn'>update a lot</button>
+    <h5> 当前时间：<span id='current_time'></span>
+    </h5>
+      <script>
+        function getCurrentTime(){
+          return new Date().toLocaleString()
+        }
+
+      </script>
+
+      <script>
+    var div = document.querySelector('div')
+    console.log(div)
+    var divs = document.querySelectorAll('div')
+    console.log(divs)
+    function updateCurrentTime(){
+    var current_time_node = document.querySelector('#current_time')
+      current_time_node.innerHTML = getCurrentTime()}
+
+      updateCurrentTime();
+      console.log(document.doctype)
+    </script>
+
+    <script>
+      function setNode(){
+      console.log('set node')
+      var div = document.querySelector('div')
+        div.id = 'new_div'
+        div.innerHTML = 'id value is new_div'
+      }
+    </script>
+
+    <script>
+    var btn = document.querySelector('#btn')
+    btn.onclick = function(){
+    console.log('i am been clicked')
+    alert('work')
+     setNode()
+      }
+
+var udpate_btn = document.querySelector('#update_btn');
+update_btn.onclick = function(){
+
+    updateCurrentTime()
+}
+    </script>
+</body>
+
+</html>
+
