@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+</head>
+
+<body>
+    <h1>Demo</h1>
+    <span>输入验证码：</span><input id="code" />
+    <button id="send_code">等待验证码</button>
+    <script>
+        let btn = document.querySelector('#send_code')
+        btn.addEventListener('click', function (e) {
+            let start = 10
+            console.log('click');
+            btn.disabled = true;
+            let timer = setInterval(function () {
+                if (start == 0) {
+                    btn.innerHTML = '重新发送验证码';
+                    clearInterval(btn)
+                    btn.disabled = false
+                    start = 0
+                } else {
+                    btn.innerHTML = '等待验证码' + String(start) + 's'
+                    start = start - 1
+                }
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

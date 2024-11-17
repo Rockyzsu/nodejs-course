@@ -5,6 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Action Demo</title>
+    <style>
+#box{
+	width:180px;
+	height: 200px;
+	background: #fff;
+	position: absolute;
+	top:0;
+	left:0;
+	border:1px solid #f06b73;
+	box-shadow:1px 1px 10px #f06b73;
+	display: none;
+}
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+ul li{
+	height: 50px;
+	list-style: none;
+	text-indent:1.5em;
+	line-height: 50px;
+	font-size:16px;
+	color: #f5726c;
+	cursor: pointer;
+}
+ul li:hover{
+	background: #fde9e9;
+	color: #e6423c;
+}
+
+span{
+	width:19px;
+	height: 19px;
+	float:left;
+	background: url(images/demo2.png) no-repeat;
+	margin:14px 0 0 34px;
+	display: block;
+}
+span.s1{
+	background-position:0 0;
+}
+span.s2{
+	background-position:-19px 0;
+}
+span.s3{
+	background-position:-38px 0;
+}
+span.s4{
+	background-position:-56px 0;
+}
+    </style>
 </head>
 
 <body>
@@ -28,8 +80,30 @@
 
     </script>
 
+    <div id="box">
+        <ul id="ul">
+            <li><span class="s1"></span>Download</li>
+            <li><span class="s2"></span>DELETE</li>
+            <li><span class="s3"></span>MOVE</li>
+            <li><span class="s4"></span>MOVE</li>
 
+        </ul>
+    </div>
 
+    <script>
+
+        let box=document.querySelector('#box');
+        document.addEventListener('contextmenu',function(e){
+            box.style.left = e.clientX +'px'
+            box.style.top= e.clientY +'px'
+            box.style.display='block';
+            e.preventDefault();
+        })
+
+        document.onclickk = function(e){
+            box.style.display='none';
+        }
+    </script>
 </body>
 
 </html>

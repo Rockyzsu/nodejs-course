@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mybox">
+        <h1>Hello</h1>
+    </div>
+    <script>
+        function animation(callback){
+            let start = 10
+            let timer = setInterval(function () {
+            div.style.left = start + 'px'
+            start = start + 10
+            console.log(div.style.left);
+            if (start > 40) {
+                clearInterval(timer)
+                callback()
+            }
+        }, 1000)
+
+        }
+
+        let div = document.getElementById('mybox')
+        animation(function(){
+            console.log('task done')
+        })
+        
+
+    </script>
+</body>
+
+</html>
