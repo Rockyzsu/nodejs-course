@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            height: 70px;
+            width: 360px;
+            padding-top: 360px;
+            border: 1px solid black;
+            margin: 100px auto;
+            overflow: hidden;
+            background: url(images/01big.jpg) no-repeat;
+            background-size: 100%;
+        }
+
+        #box ul {
+            overflow: hidden;
+            border-top: 1px solid black;
+        }
+
+        #box li {
+            float: left;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Demo</h1>
+    <button id="myButton">Click Me!</button>
+    <ul>
+        <li>1111111111111111111111111</li>
+        <li>222222222222222222222222</li>
+        <li>33333333333333333333333333</li>
+        <li>4444444444444444444444444</li>
+        <li>5555555555555555555555555</li>
+        <li>6666666666666666666666666</li>
+    </ul>
+    <h2>Image test</h2>
+    <div id="box">
+        <ul>
+            <li><img src="images/01.jpg"></li>
+            <li><img src="images/02.jpg"></li>
+            <li><img src="images/03.jpg"></li>
+            <li><img src="images/04.jpg"></li>
+        </ul>
+    </div>
+    <script>
+        let ul_element = document.querySelector('ul')
+        ul_element.onclick = function (e) {
+            e.target.style.backgroundColor = 'red'
+            console.log(e.target)
+        }
+    </script>
+</body>
+
+</html>
