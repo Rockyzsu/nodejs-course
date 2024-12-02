@@ -35,3 +35,29 @@ console.log(currentDate2.toISOString().split('T')[0]);
 console.log(currentDate2);
 
 
+const getCurrentQuarterMonth = ()=> {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth();
+  let date_range;
+
+  switch (Math.floor(currentMonth / 3)) {
+    case 0: // 第一季度
+    date_range = ['1','2','3'].map(x=>currentDate.getFullYear()+x);
+      break;
+    case 1: // 第二季度
+    date_range = ['4','5','6'].map(x=>currentDate.getFullYear()+x);
+      break;
+    case 2: // 第三季度
+    date_range = ['7','8','9'].map(x=>currentDate.getFullYear()+x);
+      break;
+    case 3: // 第四季度
+    date_range = ['10','11','12'].map(x=>currentDate.getFullYear()+x);
+      break;
+  }
+
+  return date_range;
+}
+
+
+const date_range = getCurrentQuarterMonth()
+console.log(date_range)

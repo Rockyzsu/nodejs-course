@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+</head>
+
+<body>
+    <h1>Demo</h1>
+    <button id="visit_web">访问第三方网站</button>
+    <button id="reload_btn">reload</button>
+    <div>Current Time : <span id="time_str"></span></div>
+    <script>
+        let visit_web_btn = document.querySelector('#visit_web')
+        visit_web_btn.addEventListener('click', function (e) {
+            window.location.href = 'http://30daydo.com'
+            console.log('go head')
+        })
+
+
+        let reload_btn = document.getElementById('reload_btn')
+        reload_btn.addEventListener('click', function (e) {
+            window.location.reload()
+        })
+
+        let time_str = document.getElementById('time_str')
+        setTimeout(function(){
+            time_str.innerHTML = "END"
+        },3000)
+    </script>
+</body>
+
+</html>
