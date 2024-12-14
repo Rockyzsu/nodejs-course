@@ -83,4 +83,23 @@ function lastMonth() {
   console.log(`上一个月的月份：${month}`);
 }
 
-lastMonth();
+const lastYear = () => {
+  const currentDate = moment();
+
+  // 获取上一个月的日期
+  const lastYeaerDate = currentDate.subtract(1, "years");
+  const lastYearFmt = lastYeaerDate.format('YYYY-MM-DD HH:mm:ss');
+
+  const lastMonthDate = currentDate.subtract(1, "months");
+  const lastMonthFmt = lastMonthDate.format('YYYY-MM-DD HH:mm:ss');
+
+  console.log(lastYearFmt);
+  console.log(lastMonthFmt);
+
+};
+
+const date_range = getCurrentQuarterMonth();
+console.log(date_range);
+
+// lastMonth();
+lastYear();

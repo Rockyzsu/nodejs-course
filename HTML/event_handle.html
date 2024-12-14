@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Event Handle</title>
+</head>
+
+<body>
+    <div id="outer" style="padding: 20px; background-color: red;">
+        <div id="inner" style="padding: 20px;background-color: gray;">
+            <input type="text" id="input" style="padding: 20px;background-color: yellow;"/>
+        </div>
+    </div>
+
+    <script>
+        function captureListener(event) {
+            console.log('Capture: ' + event.currentTarget.id);
+            console.log('Capture: ' + event.target.tagName);
+
+        }
+        function bubbleListener(event) {
+            console.log('Bubble: ' + event.currentTarget.id);
+            console.log('Bubble: ' + event.target.tagName);
+        
+        }
+        // document.getElementById('outer').addEventListener('click', captureListener, true);
+        // document.getElementById('outer').addEventListener('click', bubbleListener, false);
+        
+        // document.getElementById('input').addEventListener('click', captureListener, true);
+        // document.getElementById('input').addEventListener('click', bubbleListener, false);
+
+        // document.getElementById('input').addEventListener('click', bubbleListener, false);
+        // document.getElementById('inner').addEventListener('click', bubbleListener, false);
+
+        document.getElementById('outer').addEventListener('click', captureListener, true);
+        document.getElementById('outer').addEventListener('click', bubbleListener, false);
+</script>
+</body>
+
+</html>
