@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP Demo</title>
+
+</head>
+
+<body>
+    <h5>
+        <div class="content"></div>
+    </h5>
+    <script>
+        // function jsonp(req) {
+        //     var script = document.createElement('script');
+        //     var url = req.url + '?callback=' + req.callback.name;
+        //     script.src = url;
+        //     console.log('src ',url)
+        //     document.getElementsByTagName('head')[0].appendChild(script);
+        // }
+
+        function jsonp_func(req) {
+            var script = document.createElement('script');
+            // var url = req.url + '?callback=' + req.callback.name;
+            script.src = 'http://127.0.0.1:8080/hello';
+            // console.log('src ',url)
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+
+    </script>
+
+    <script>
+        function hello(res) {
+            
+            // alert('hello ' + res.data);
+            console.log('data: ' + res.data);
+            document.querySelector('.content').innerHTML = res.data;
+        }
+        jsonp_func({
+            url: 'http://127.0.0.1:8080/',
+            callback: hello
+        });
+    </script>
+</body>
+
+</html>
