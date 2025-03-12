@@ -6,8 +6,8 @@ app.use(compression());
 // router = express.Router();
 app.get("/", (req, res) => {
   console.log("call");
-  throw Error("set error");
-  res.send("Hello World!");
+  // throw Error("set error");
+  res.send("Hello World! jobs");
 });
 const fs = require("fs");
 app.get("/big_image", (req, res, next) => {
@@ -18,6 +18,9 @@ app.get("/big_image", (req, res, next) => {
   //   res.send('big');
 });
 
+app.get('/header',(req,res)=>{
+  return res.send(req.headers);
+})
 app.get("/big_text", (req, res, next) => {
   console.log(req.url);
   const file = fs.readFileSync("./static/test.sql");

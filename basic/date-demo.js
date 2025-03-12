@@ -1,4 +1,3 @@
-
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth() + 1; // 月份是从0开始计数的，所以要加1
@@ -56,3 +55,35 @@ const getCurrentQuarterMonth = () => {
   return date_range;
 };
 
+const myDefineDate = new Date();
+console.log("My Date: ", myDefineDate);
+
+// 获取当前 UTC 时间戳
+const utcTimestamp = Date.now();
+console.log("UTC时间:", utcTimestamp);
+// 假设目标时区比 UTC 快 8 小时（北京时间），偏移量为 8 * 60 分钟
+const timezoneOffset = 8 * 60;
+
+// 计算目标时区的时间戳
+const targetTimestamp = utcTimestamp + timezoneOffset * 60 * 1000;
+
+// 创建目标时区的日期对象
+const targetDate = new Date(targetTimestamp);
+
+console.log("目标时区时间:", targetDate);
+console.log("目标时区时间:", targetDate.toLocaleString());
+
+const currentTime = () => {
+  const utcTimestamp = Date.now();
+  // 假设目标时区比 UTC 快 8 小时（北京时间），偏移量为 8 * 60 分钟
+  const timezoneOffset = 8 * 60;
+
+  // 计算目标时区的时间戳
+  const targetTimestamp = utcTimestamp + timezoneOffset * 60 * 1000;
+
+  // 创建目标时区的日期对象
+  const targetDate = new Date(targetTimestamp);
+  return targetDate.toISOString().slice(0, 19).replace("T", " ");
+};
+
+console.log(currentTime());
