@@ -1,0 +1,15 @@
+{
+  "name": "promise_book",
+  "version": "1.0.0",
+  "main": "fetch_demo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
