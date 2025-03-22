@@ -1,4 +1,4 @@
-const faker = require('faker');
+const { faker } = require('@faker-js/faker');
 
-const randomName = faker.name.findName();
+const randomName = faker.person.fullName();
 console.log(randomName);
