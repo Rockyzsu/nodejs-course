@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script src="./js/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>首页</h1>
+    <div>用户信息
+        <div id="userinfo"></div>
+    </div>
+    <script>
+        function getUserinfo() {
+            console.log('init')
+            let token = localStorage.getItem('token')
+            if (!token) {
+                alert('请登录后')
+                return
+            }
+            let tokenStr = `Bearer ${token}`
+            $.ajax({
+                url: 'http://127.0.0.1:2005/info',
+                type: 'get',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', tokenStr)
+                },
+                // xhrFields: {
+                //     withCredentials: true
+                // },
+                success: function (data) {
+                    console.log(data)
+                    if (data.status == 1) {
+                        $('#userinfo').text(data.username)
+                    } else {
+                        // window.location.href = 'login.html'
+                        console.log('未登录')
+                    }
+                },
+                error: function (jqXHR, text, err) {
+
+                    alert('No user login' + err)
+                }
+            })
+        }
+        window.onload = getUserinfo;
+    </script>
+</body>
+
+</html>

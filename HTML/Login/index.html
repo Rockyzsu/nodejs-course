@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script src="./js/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>首页</h1>
+    <div>用户信息
+        <div id="userinfo"></div>
+    </div>
+    <script>
+        function getUserinfo() {
+            console.log('init')
+            $.ajax({
+                url: 'http://example.com/api/user/info',
+                type: 'get',
+                // xhrFields: {
+                //     withCredentials: true
+                // },
+                success: function (data) {
+                    console.log(data)
+                    if (data.status == 1) {
+                        $('#userinfo').text(data.user)
+                    }else{
+                        window.location.href = 'login.html'
+                    }
+                },
+                error: function (jqXHR, text, err) {
+
+                    alert('No user login' + err)
+                }
+            })
+        }
+        window.onload = getUserinfo;
+    </script>
+</body>
+
+</html>
