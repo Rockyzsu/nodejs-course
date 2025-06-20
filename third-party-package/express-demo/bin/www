@@ -4,7 +4,9 @@
  * Module dependencies.
  */
 require('dotenv').config();
-var app = require('../src/app');
+// 修改这里
+var app = require('../src/middleware');
+
 var debug = require('debug')('webist:server');
 var http = require('http');
 

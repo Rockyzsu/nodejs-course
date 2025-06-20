@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#login').click(function () {
+                const username = $('#username').val();
+                const password = $('#password').val();
+
+                if (username && password) {
+                    // alert(`Username: ${username}\nPassword: ${password}`);
+                    // You can add AJAX or other logic here to handle the form submission
+                    $.ajax({
+                        url: 'http://example.com/api/user/login',
+                        type: 'post',
+                        // xhrFields: {
+                        //     withCredentials: true
+                        // },
+                        data: {
+                            username: username,
+                            password: password
+
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data.status == 1) {
+                                alert('登录成功')
+                                window.location.href = 'index.html'
+                            } else {
+                                alert('Login Failed');
+
+                            }
+                        },
+                        error: function (jqXHR, text, err) {
+                            console.log(err)
+                            alert('Login Failed');
+                        }
+                    })
+                } else {
+                    alert('Please fill in both fields.');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>登录页面</h1>
+    <form>
+        username: <input type="text" id="username"><br>
+        password: <input type="text" id="password"><br>
+        <input type="button" value="提交" id="login">
+    </form>
+</body>
+
+</html>

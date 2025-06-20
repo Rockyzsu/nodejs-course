@@ -1,15 +1,19 @@
+// function sleep(time){
+//  return new Promise((resolve) => setTimeout(resolve, time));
+// }
+
 function sleep(time){
- return new Promise((resolve) => setTimeout(resolve, time));
+ return new Promise((resolve,reject) => setTimeout(()=>{resolve()}, time));
 }
   
 async function run(){
- console.time('runTime:');
+ console.time('runTime');
  console.log('1');
  await sleep(2000);
  console.log('2');
  await sleep(1000);
  console.log('3'); 
- console.timeEnd('runTime:');
+ console.timeEnd('runTime');
 }
   
 run();
