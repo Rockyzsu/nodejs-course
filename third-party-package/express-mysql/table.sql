@@ -1,0 +1,17 @@
+CREATE TABLE `accounts` (
+  `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `balance` DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+  `status` TINYINT NOT NULL DEFAULT 1, -- 1: 正常, 0: 冻结/停用
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `account_balance_logs` (
+  `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `account_id` INT UNSIGNED NOT NULL,
+  `before_balance` DECIMAL(12,2) NOT NULL,
+  `change_amount` DECIMAL(12,2) NOT NULL,
+  `after_balance` DECIMAL(12,2) NOT NULL,
+  `remark` VARCHAR(100) DEFAULT '',
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`account_id`) REFERENCES `accounts`(`id`)
+);
